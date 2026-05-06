@@ -1,12 +1,11 @@
-# Challenge: ROS 2 Lifecycle Node 🔄
+# Challenge : Lifecycle Node (Managed Nodes) 🔄
 
-Ce projet implémente un **Managed Node** (nœud à cycle de vie) sous ROS 2 Jazzy. Contrairement aux nœuds classiques, les Lifecycle Nodes permettent de contrôler précisément le démarrage, la configuration et l'arrêt des composants d'un robot.
+Ce projet implémente un nœud à cycle de vie sous **ROS 2 Jazzy**. Contrairement aux nœuds classiques, les Lifecycle Nodes permettent un contrôle déterministe des états de fonctionnement (Configuration, Activation, Désactivation), ce qui est crucial pour la sécurité en robotique industrielle.
 
 ## 🏗 États de la Machine
-- **Unconfigured** : Nœud instancié mais ressources non allouées.
+- **Unconfigured** : Nœud instancié, ressources non allouées.
 - **Inactive** : Ressources allouées mais aucun message n'est publié.
-- **Active** : Nœud opérationnel (Publishing/Subscriptions actifs).
-- **Finalized** : Nœud détruit proprement.
+- **Active** : Nœud opérationnel (Publishing actif).
 
 ## 🛠 Compilation
 ```bash
@@ -15,21 +14,22 @@ colcon build --packages-select lifecycle_node_challenge
 source install/setup.bash
 ```
 
-## 🚀 Utilisation (Transitions manuelles)
+## 🚀 Utilisation (Pilotage des transitions)
 Lancer le nœud :
 ```bash
 ros2 run lifecycle_node_challenge lc_node
 ```
 
-Dans un autre terminal, piloter les transitions :
+Dans un autre terminal, changez les états manuellement :
 ```bash
-# Configurer
+# 1. Configurer
 ros2 lifecycle set /my_lifecycle_node configure
-# Activer
+# 2. Activer
 ros2 lifecycle set /my_lifecycle_node activate
-# Désactiver
+# 3. Désactiver
 ros2 lifecycle set /my_lifecycle_node deactivate
 ```
 
 ---
-**Maria Lagab** - Spécialité Robotique et Système Intelligent
+**Développeur :** Maria Lagab  
+**Spécialité :** Robotique et Système Intelligent
